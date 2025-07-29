@@ -57,3 +57,20 @@ docker inspect novo_volume
 `
 https://docs.docker.com/engine/storage/volumes/#back-up-restore-or-migrate-data-volumes
 `
+
+### Examples
+
+`
+docker container run -d -e POSTGRES_PASSWORD=minhasenha -p 5432:5432 --mount type=bind,source="$(pwd)/docker/07-docker-volume/db_vol",target=/var/lib/postgresql/data postgres
+`
+
+`
+create table pessoa (
+	id INT generated always as identity,
+	nome varchar not null
+);
+`
+
+`
+docker container run -d -e POSTGRES_PASSWORD=minhasenha -p 5432:5432 --mount type=volume,source=container_postgre_vol,target=/var/lib/postgresql/data postgres
+`
