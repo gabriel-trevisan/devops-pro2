@@ -74,3 +74,13 @@ create table pessoa (
 `
 docker container run -d -e POSTGRES_PASSWORD=minhasenha -p 5432:5432 --mount type=volume,source=container_postgre_vol,target=/var/lib/postgresql/data postgres
 `
+
+### Tmpfs
+
+`
+docker container run -it --mount type=tmpfs,target=/app ubuntu /bin/bash
+`
+
+`
+docker container run -d -p 3306:3306 --tmpfs /var/lib/mysql -e MYSQL_ROOT_PASSWORD=rootpwd mysql
+`
