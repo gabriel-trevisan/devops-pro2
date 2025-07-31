@@ -84,3 +84,18 @@ docker container run -it --mount type=tmpfs,target=/app ubuntu /bin/bash
 `
 docker container run -d -p 3306:3306 --tmpfs /var/lib/mysql -e MYSQL_ROOT_PASSWORD=rootpwd mysql
 `
+
+### Example Project
+
+`
+git clone https://github.com/gabriel-trevisan/kube-news
+`
+
+`
+docker container run -d -p 5432:5432 -e POSTGRES_PASSWORD=Pg123 -e POSTGRES_USER=kubenews \
+-e POSTGRES_DB=kubenews -v kubenews_vol:/var/lib/postgresql/data postgres:14.10
+`
+
+`
+DB_DATABASE=kubenews DB_USERNAME=kubenews DB_PASSWORD=Pg123  node server.js
+`
